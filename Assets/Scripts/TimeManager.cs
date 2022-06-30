@@ -38,12 +38,8 @@ public class TimeManager : MonoBehaviour
             return;
         }
 
-        if (!restart.IsFinish())
-        {
-            // カウントダウン処理
-            limit -= Time.deltaTime;
-            timeText.text = "残り時間：" + limit.ToString("f1") + "秒";
-        }
-        Debug.Log(restart.IsFinish());
+        // カウントダウン処理
+        limit -= Time.deltaTime;
+        timeText.text = "残り時間：" + limit.ToString("f1") + "秒";
     }
 }
