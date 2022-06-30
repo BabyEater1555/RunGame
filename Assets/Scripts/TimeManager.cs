@@ -29,12 +29,16 @@ public class TimeManager : MonoBehaviour
         {
             restart.Restart();
         }
-        
+
         // カウントダウン終了時の処理
-        if(limit < 0)
+        if (limit < 0)
         {
             restart.PrintGameOver();
 
+            return;
+        }
+        else if(GoalController.isClear || EnemyHitController.isHitEnemy || DeadWallController.isHitWall || DropManager.isDrop)
+        {
             return;
         }
 

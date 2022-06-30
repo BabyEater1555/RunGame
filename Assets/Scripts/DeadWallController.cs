@@ -11,6 +11,7 @@ public class DeadWallController : MonoBehaviour
     public float max_x = 10.0f;
     public GameObject player;
     public GameObject text;
+    public static bool isHitWall;
 
     private RestartManager restart;
 
@@ -18,6 +19,7 @@ public class DeadWallController : MonoBehaviour
     void Start()
     {
         restart = new RestartManager(player, text);
+        isHitWall = false;
     }
 
     // Update is called once per frame
@@ -44,6 +46,9 @@ public class DeadWallController : MonoBehaviour
         if (other.gameObject.name == player.name)
         {
             restart.PrintGameOver();
+
+            // ゲームオーバーフラグ
+            isHitWall = restart.IsFinish();
         }
     }
 }

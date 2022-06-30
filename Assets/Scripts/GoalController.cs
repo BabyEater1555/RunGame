@@ -7,6 +7,7 @@ public class GoalController : MonoBehaviour
     public GameObject player;
     public GameObject text;
     public GameObject enemy;
+    public static bool isClear;
     private float rotateSpeed = 1.0f;
 
     private RestartManager restart;
@@ -15,6 +16,7 @@ public class GoalController : MonoBehaviour
     void Start()
     {
         restart = new RestartManager(player, text);
+        isClear = false;
     }
 
     // Update is called once per frame
@@ -41,6 +43,9 @@ public class GoalController : MonoBehaviour
             enemy.SetActive(false);
 
             restart.PrintGoal();
+
+            // クリアフラグ
+            isClear = restart.IsFinish();
         }
     }
 }
